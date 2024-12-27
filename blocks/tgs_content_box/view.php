@@ -24,7 +24,7 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
                 ?>
                 <?php print $imageTag; ?>
                 <?php if (!empty($cb->getImageLegend())) { ?>
-                <figcaption><?php echo t($cb->getImageLegend()); ?></figcaption>
+                <figcaption><?php echo nl2br(t($cb->getImageLegend())); ?></figcaption>
                 <?php } ?>
             </figure>
         </div>
