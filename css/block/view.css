@@ -1,5 +1,6 @@
 .ccm-block-tgs-content-box.default {
   position: relative;
+  margin-bottom: 2rem;
 }
 .ccm-block-tgs-content-box.default.image-left .tgs-content-box-text > :first-child, .ccm-block-tgs-content-box.default.image-right .tgs-content-box-text > :first-child {
   margin-top: 0;
