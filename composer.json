@@ -1,0 +1,34 @@
+{
+  "name": "tochtergesellschaft/concretecms-concrete-box",
+  "description": "@TODO",
+  "type": "concrete5-package",
+  "minimum-stability": "dev",
+  "support": {
+    "email": "",
+    "issues": "https://github.com/tochtergesellschaft/concretecms-content-box/issues",
+    "source": "https://github.com/tochtergesellschaft/concretecms-content-box"
+  },
+  "license": "proprietary",
+  "keywords": [
+    "concrete5",
+    "c5",
+    "addon",
+    "concrete5 addon",
+    "concrete5 text image",
+    "concrete5 button"
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/tochtergesellschaft/concretecms-content-box"
+    }
+  ],
+  "config": {
+    "optimize-autoloader": true
+  },
+  "require": {
+    "composer/installers": "^1.0",
+    "concrete5/core": "9.*",
+    "php": ">=8.0"
+  }
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concrete5-cif version="1.0">
+    <blocktypes>
+        <blocktype handle="tgs_content_box" package="tgs_content_box"/>
+    </blocktypes>
+    <singlepages>
+        <page description="Configure default- and fallback-values for the content-box block."
+              filename="/dashboard/tgs_backend/content_box_settings.php"
+              name="Content Box Settings"
+              package="tgs_content_box"
+              pagetype=""
+              path="/dashboard/tgs_backend/content_box_settings"/>
+    </singlepages>
+</concrete5-cif>

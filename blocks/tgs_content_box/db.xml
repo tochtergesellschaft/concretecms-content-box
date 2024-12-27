@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema
+    xmlns="http://www.concrete5.org/doctrine-xml/0.5"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.concrete5.org/doctrine-xml/0.5 http://concrete5.github.io/doctrine-xml/doctrine-xml-0.5.xsd">
+    <table name="btTgsContentBox">
+        <field name="bID" type="integer">
+            <unsigned/>
+            <key/>
+        </field>
+        <field name="buttonType" type="string" size="255"/>
+        <field name="imgAlt" type="text"/>
+        <field name="imgId" type="integer"/>
+        <field name="imgLegend" type="text"/>
+        <field name="linkTarget" type="string" size="255"/>
+        <field name="linkText" type="text"/>
+        <field name="linkType" type="string" size="255"/>
+        <field name="linkValue" type="text"/>
+        <field name="text" type="text"/>
+    </table>
+</schema>
