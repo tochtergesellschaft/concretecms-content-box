@@ -1,6 +1,6 @@
 {
-  "name": "tochtergesellschaft/concretecms-concrete-box",
-  "description": "@TODO",
+  "name": "tochtergesellschaft/tgs_content_box",
+  "description": "Add image, text and button with only one block.",
   "type": "concrete5-package",
   "minimum-stability": "dev",
   "support": {
