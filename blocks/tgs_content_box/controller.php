@@ -4,7 +4,6 @@ namespace Concrete\Package\TgsContentBox\Block\TgsContentBox;
 
 use Concrete\Core\Block\BlockController;
 use Concrete\Core\Page\Theme\Theme;
-use Illuminate\Contracts\Container\BindingResolutionException;
 
 defined('C5_EXECUTE') or die(_('Access Denied.'));
 
@@ -118,7 +117,7 @@ class Controller extends BlockController
      * Set some default values/helpers when adding or editing the current block-instance.
      *
      * @return void
-     * @throws BindingResolutionException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
     protected function prepareAddEdit(): void
     {
