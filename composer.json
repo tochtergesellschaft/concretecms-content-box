@@ -4,7 +4,7 @@
   "type": "concrete5-package",
   "minimum-stability": "dev",
   "support": {
-    "email": "",
+    "email": "ramiro@rampini.dev",
     "issues": "https://github.com/tochtergesellschaft/concretecms-content-box/issues",
     "source": "https://github.com/tochtergesellschaft/concretecms-content-box"
   },
@@ -28,7 +28,6 @@
   },
   "require": {
     "composer/installers": "^1.0",
-    "concrete5/core": "9.*",
     "php": ">=8.0"
   }
 }
