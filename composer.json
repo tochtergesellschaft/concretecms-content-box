@@ -2,6 +2,7 @@
   "name": "tochtergesellschaft/tgs_content_box",
   "description": "Add image, text and button with only one block.",
   "type": "concrete5-package",
+  "prefer-stable": true,
   "minimum-stability": "dev",
   "support": {
     "email": "ramiro@rampini.dev",
