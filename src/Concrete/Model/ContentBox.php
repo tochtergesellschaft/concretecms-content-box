@@ -238,7 +238,7 @@ class ContentBox implements \JsonSerializable
         return $this->text;
     }
     /**
-     * Wrapper for <code>$this->>getHasImage()</code> method.
+     * Wrapper for <code>$this->>getHasLink()</code> method.
      *
      * @return bool
      */
