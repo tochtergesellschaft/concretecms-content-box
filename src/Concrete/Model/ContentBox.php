@@ -9,20 +9,115 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 
 class ContentBox implements \JsonSerializable
 {
+    /**
+     * The block-id of the current block-instance.
+     * When adding a new block to the page the block-id's initial value is null.
+     *
+     * @var int|null $blockId
+     */
     private ?int $blockId;
+    /**
+     * The button-type (button-color). Selectable values are collected from the page-theme
+     * <code>getColorCollection()</code> method.
+     *
+     * @var string $buttonType
+     */
     private string $buttonType;
-    private ?File $imageFile;
+    /**
+     * The image alternative-text. This is only plain-text and not rich-text.
+     *
+     * @var string|null $imageAlt
+     */
     private ?string $imageAlt;
+    /**
+     * The image-file object if an image was selected in the block-form.
+     *
+     * @var File|null $imageFile
+     */
+    private ?File $imageFile;
+    /**
+     * True, if an image was selected and the corresponding image-file object was
+     * found. False otherwise.
+     *
+     * @var bool $hasImage
+     */
     private bool $hasImage;
+    /**
+     * True, if a link was selected and the link-url could be built and the link-url is not empty.
+     * False, otherwise.
+     *
+     * @var bool $hasLink
+     */
     private bool $hasLink;
+    /**
+     * The image-id of the selected image. <code>null</code> if no image was selected or the image
+     * was deleted since the block was saved.
+     *
+     * @var int|null $imageId
+     */
     private ?int $imageId;
+    /**
+     * The image-path of the selected image.
+     *
+     * @var string|null $imagePath
+     */
     private ?string $imagePath;
+    /**
+     * The image-legend. This is only plain-text and not rich-text.
+     *
+     * @var string|null $imageLegend
+     */
     private ?string $imageLegend;
+    /**
+     * The link-url. This value can be used as example in <code>href</code> html attributes.
+     * This value will be built depending on the <code>$linkValue</code> property of this model.
+     * Inside the database the page-id, file-id or the external-url will be saved. Therefore,
+     * the link-url must be built differently sometimes.
+     *
+     * @var string $link
+     */
     private string $link;
-    private ?string $linkText;
+    /**
+     * The link-text of the link. This value is commonly used as button-text. If no text was
+     * set via the block-form the fallback value of the config<br>
+     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkText');</code><br>
+     * will be used.
+     *
+     * @var string $linkText
+     */
+    private string $linkText;
+    /**
+     * The link-type of the selected link. This value is used to detect which type of link
+     * the user has selected. Values are outsourced here<br>
+     * <code>Concrete\Package\TgsContentBox\Definition\LinkType</code>
+     *
+     * @var string|null $linkType
+     */
     private ?string $linkType;
+    /**
+     * The raw link-value of the selected link. This can be the page-id, file-id, the external-link
+     * or nothing (if no link was selected/set). This value can not be used directly as example
+     * inside html href attribute. Use the <code>$this->getLink()</code> method to get the
+     * transformer link-url.
+     *
+     * @var string $linkValue
+     */
     private string $linkValue;
+    /**
+     * The link-target of the link. This is as default <code>_self</code> or <code>_blank</code>
+     * The values can be set in this config:<br>
+     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</code>
+     *
+     * @var string $linkTarget
+     */
     private string $linkTarget;
+    /**
+     * The text. This is rich-text and not only plain-text. Therefore, print this value inside a
+     * <code><div></div></code> (or similar tag) and not inside as example <code><p></p></code>
+     * because this can cause invalid html code (no paragraph inside paragraph and so on...).
+     *
+     * @var string|null $text
+     */
     private ?string $text;
 
     public function setBlockId($blockId): void
@@ -86,17 +181,18 @@ class ContentBox implements \JsonSerializable
         $this->text = $text;
     }
     /**
-     * Get the id of the current block-instance.
+     * The block-id of the current block-instance.
+     * When adding a new block to the page the block-id's initial value is null.
      *
-     * @return int
+     * @return int|null
      */
-    public function getBlockId(): int
+    public function getBlockId(): ?int
     {
         return $this->blockId;
     }
     /**
-     * The button-type (or button-color). Selectable values are collected from the page-theme
-     * <code>getColorCollection()</code> method.
+     * The button-type (or button-color). This is commonly a bootstrap color css-class
+     * as example <code>primary</code> or <code>secondary</code>.
      *
      * @return string
      */
@@ -105,7 +201,7 @@ class ContentBox implements \JsonSerializable
         return $this->buttonType;
     }
     /**
-     * The image alternative-text.
+     * The image alternative-text. This is only plain-text and not rich-text.
      *
      * @return string|null
      */
@@ -114,7 +210,7 @@ class ContentBox implements \JsonSerializable
         return $this->imageAlt;
     }
     /**
-     * The image-object of the selected file.
+     * The image-file object if an image was selected in the block-form.
      *
      * @return File|null
      */
@@ -123,8 +219,9 @@ class ContentBox implements \JsonSerializable
         return $this->imageFile;
     }
     /**
-     * True, if an image was selected in the block-form and the related file-object
-     * was found at this moment.
+     * True, if an image was selected and the corresponding image-file object was found.
+     * False otherwise. False as example when the file was deleted since the image was
+     * selected inside the block-form.
      *
      * @return bool
      */
@@ -133,7 +230,8 @@ class ContentBox implements \JsonSerializable
         return $this->hasImage;
     }
     /**
-     * True, if an external-url was set or an url could be extracted from the selected file/page.
+     * True, if a link was selected and the link-url could be built and the link-url is not empty.
+     * False, otherwise.
      *
      * @return bool
      */
@@ -142,7 +240,8 @@ class ContentBox implements \JsonSerializable
         return $this->hasLink;
     }
     /**
-     * The file-id of the selected image.
+     * The image-id of the selected image. <code>null</code> if no image was selected or the image
+     * was deleted since the block was saved.
      *
      * @return int|null
      */
@@ -151,7 +250,7 @@ class ContentBox implements \JsonSerializable
         return $this->imageId;
     }
     /**
-     * The image-path with option to include the base-url of the selected image.
+     * The image-path of the selected image with option to include the base-url.
      *
      * @param bool $includeBaseUrl
      * @return string|null
@@ -165,13 +264,25 @@ class ContentBox implements \JsonSerializable
         return $this->imagePath;
     }
     /**
-     * The image-legend.
+     * The image-legend. This is only plain-text and not rich-text.
      *
      * @return string|null
      */
     public function getImageLegend(): ?string
     {
         return $this->imageLegend;
+    }
+    /**
+     * The link-url. This value can be used as example in <code>href</code> html attributes.
+     * This value will be built depending on the <code>$linkValue</code> property of this model.
+     * Inside the database the page-id, file-id or the external-url will be saved. Therefore,
+     * the link-url must be built differently sometimes.
+     *
+     * @return string
+     */
+    public function getLink(): string
+    {
+        return $this->link;
     }
     /**
      * The link-rel depending on the <code>linkTarget</code> property.
@@ -183,17 +294,21 @@ class ContentBox implements \JsonSerializable
         return $this->linkTarget === '_blank' ? 'noopener noreferrer' : '';
     }
     /**
-     * The link-text. Commonly used as button-text.
+     * The link-text of the link. This value is commonly used as button-text. If no text was
+     * set via the block-form the fallback value of the config<br>
+     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkText');</code><br>
+     * will be used.
      *
-     * @return string|null
+     * @return string
      */
-    public function getLinkText(): ?string
+    public function getLinkText(): string
     {
         return $this->linkText;
     }
     /**
-     * The type of the link. Commonly used to detect if the user has selected a file
-     * page or external-url as link.
+     * The link-type of the selected link. This value is used to detect which type of link
+     * the user has selected. Values are outsourced here<br>
+     * <code>Concrete\Package\TgsContentBox\Definition\LinkType</code>
      *
      * @return string|null
      */
@@ -202,26 +317,22 @@ class ContentBox implements \JsonSerializable
         return $this->linkType;
     }
     /**
-     * The raw value of the selected link. This can be the file-id, page-id or the full
-     * external-url. This value can not be used as example directly inside a href.
+     * The raw link-value of the selected link. This can be the page-id, file-id, the external-link
+     * or nothing (if no link was selected/set). This value can not be used directly as example
+     * inside html href attribute. Use the <code>$this->getLink()</code> method to get the
+     * transformer link-url.
      *
-     * @return mixed
+     * @return string
      */
-    public function getLinkValue(): mixed
+    public function getLinkValue(): string
     {
         return $this->linkValue;
     }
     /**
-     * The transformed link. As example this value can be used inside a href.
+     * The link-target of the link. This is as default <code>_self</code> or <code>_blank</code>
+     * The values can be set in this config:<br>
+     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</code>
      *
-     * @return mixed
-     */
-    public function getLink()
-    {
-        return $this->link;
-    }
-    /**
-     * The selected link-target. As example <code>_self</code> or <code>_blank</code>.
      * @return string
      */
     public function getLinkTarget(): string
@@ -229,7 +340,9 @@ class ContentBox implements \JsonSerializable
         return $this->linkTarget;
     }
     /**
-     * The text (rich-text).
+     * The text. This is rich-text and not only plain-text. Therefore, print this value inside a
+     * <code><div></div></code> (or similar tag) and not inside as example <code><p></p></code>
+     * because this can cause invalid html code (no paragraph inside paragraph and so on...).
      *
      * @return string|null
      */
@@ -238,7 +351,10 @@ class ContentBox implements \JsonSerializable
         return $this->text;
     }
     /**
-     * Wrapper for <code>$this->>getHasLink()</code> method.
+     * Wrapper for <code>$this->hasImage()</code> method.
+     * True, if an image was selected and the corresponding image-file object was found.
+     * False otherwise. False as example when the file was deleted since the image was
+     * selected inside the block-form.
      *
      * @return bool
      */
@@ -247,7 +363,9 @@ class ContentBox implements \JsonSerializable
         return $this->getHasImage();
     }
     /**
-     * Wrapper for <code>$this->>getHasLink()</code> method.
+     * Wrapper for <code>$this->getHasLink()</code> method.
+     * True, if a link was selected and the link-url could be built and the link-url is not empty.
+     * False, otherwise.
      *
      * @return bool
      */
