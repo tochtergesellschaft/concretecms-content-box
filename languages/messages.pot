@@ -7,8 +7,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2024-12-28T02:40:03+01:00\n"
-"PO-Revision-Date: 2024-12-28T02:40:03+01:00\n"
+"POT-Creation-Date: 2024-12-28T03:23:32+01:00\n"
+"PO-Revision-Date: 2024-12-28T03:23:32+01:00\n"
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
@@ -52,7 +52,7 @@ msgstr ""
 
 #: packages/tgs_content_box/blocks/tgs_content_box/controller.php:90
 msgctxt "tgs_content-box"
-msgid "The field \"Link-Text\" is required."
+msgid "The field \"Button-Text\" is required."
 msgstr ""
 
 #: packages/tgs_content_box/blocks/tgs_content_box/form.php:18
@@ -107,19 +107,19 @@ msgctxt "tgs_content-box"
 msgid "Button-Type"
 msgstr ""
 
-#: packages/tgs_content_box/config/general.php:12
+#: packages/tgs_content_box/config/general.php:8
+msgctxt "tgs_content-box"
+msgid "more"
+msgstr ""
+
+#: packages/tgs_content_box/config/general.php:14
 msgctxt "tgs_content-box"
 msgid "Same Window (_self)"
 msgstr ""
 
-#: packages/tgs_content_box/config/general.php:13
-msgctxt "tgs_content-box"
-msgid "New Window (_blank)"
-msgstr ""
-
 #: packages/tgs_content_box/config/general.php:15
 msgctxt "tgs_content-box"
-msgid "more"
+msgid "New Window (_blank)"
 msgstr ""
 
 #: packages/tgs_content_box/controllers/single_page/dashboard/tgs_backend/content_box_settings.php:17
@@ -144,7 +144,7 @@ msgstr ""
 
 #: packages/tgs_content_box/controllers/single_page/dashboard/tgs_backend/content_box_settings.php:45
 msgctxt "tgs_content-box"
-msgid "The field \"Button-Type\" must not with a number."
+msgid "The field \"Button-Type\" must not start with a number."
 msgstr ""
 
 #: packages/tgs_content_box/controllers/single_page/dashboard/tgs_backend/content_box_settings.php:53
