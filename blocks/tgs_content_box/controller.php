@@ -19,6 +19,9 @@ class Controller extends BlockController
     /** @var int|null $bID */
     protected $bID;
 
+    /** @var string|null $buttonText */
+    protected $buttonText;
+
     /** @var string|null $buttonType */
     protected $buttonType;
 
@@ -33,9 +36,6 @@ class Controller extends BlockController
 
     /** @var string $linkTarget */
     protected $linkTarget;
-
-    /** @var string|null $linkText */
-    protected $linkText;
 
     /** @var string|null $linkType */
     protected $linkType;
@@ -78,16 +78,16 @@ class Controller extends BlockController
         /** @var ErrorList $errList */
         $errList = parent::validate($args);
 
-        // we need to validate the "linkText" (button-text) because the db-column "linkText"
+        // we need to validate the field "buttonText" because the db-column "buttonText"
         // can save only 255 characters.
-        if (isset($args['linkText'])) {
-            if (strlen($args['linkText']) > 255) {
-                $msg = 'The "Link-Text" is too long (max. 255 characters). Current length: %s';
+        if (isset($args['buttonText'])) {
+            if (strlen($args['buttonText']) > 255) {
+                $msg = 'The "Button-Text" is too long (max. 255 characters). Current length: %s';
 
-                $errList->add(tc('tgs_content-box', $msg, strlen($args['linkText'])));
+                $errList->add(tc('tgs_content-box', $msg, strlen($args['buttonText'])));
             }
         } else {
-            $errList->add(tc('tgs_content-box', 'The field "Link-Text" is required.'));
+            $errList->add(tc('tgs_content-box', 'The field "Button-Text" is required.'));
         }
 
         return $errList;
@@ -163,11 +163,11 @@ class Controller extends BlockController
     {
         return [
             'blockId' => $this->bID,
+            'buttonText' => $this->buttonText,
             'buttonType' => $this->buttonType,
             'imgAlt' => $this->imgAlt,
             'imgId' => $this->imgId,
             'imgLegend' => $this->imgLegend,
-            'linkText' => $this->linkText,
             'linkType' => $this->linkType,
             'linkValue' => $this->linkValue,
             'linkTarget' => $this->linkTarget,

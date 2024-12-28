@@ -122,21 +122,21 @@ class Transformer implements ApplicationAwareInterface
     }
 
     /**
-     * Get a valid link-text (button-text). If the link-text was not set get a fallback-value
+     * Get a valid button-text. If the link-text was not set get a fallback-value
      * from the related package-config.
      *
-     * @param $linkText
+     * @param $buttonText
      * @return string
      */
-    public function linkText($linkText = ''): string
+    public function buttonText($buttonText = ''): string
     {
-        if (empty($linkText)) {
+        if (empty($buttonText)) {
             /** @var \Concrete\Core\Config\Repository\Liaison $config */
             $config = app('config');
 
-            return $config->get('tgs_content_box::general.blockSettings.linkText', 'more');
+            return $config->get('tgs_content_box::general.blockSettings.buttonText', 'more');
         }
 
-        return trim($linkText);
+        return trim($buttonText);
     }
 }

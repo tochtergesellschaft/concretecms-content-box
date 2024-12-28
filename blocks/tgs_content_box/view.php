@@ -41,7 +41,7 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
             <a class="btn btn-<?php echo $cb->getButtonType(); ?>"
                href="<?php echo $cb->getLink(); ?>"
                target="<?php echo $cb->getLinkTarget(); ?>"
-               rel="<?php echo $cb->getLinkRel(); ?>"><?php echo t($cb->getLinkText()); ?></a>
+               rel="<?php echo $cb->getLinkRel(); ?>"><?php echo t($cb->getButtonText()); ?></a>
         </div>
         <?php } ?>
     </div>

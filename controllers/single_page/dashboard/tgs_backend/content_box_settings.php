@@ -17,7 +17,7 @@ class ContentBoxSettings extends DashboardPageController
         return tc('tgs_content-box', 'Configure default- and fallback-values for the content-box block.');
     }
     /**
-     * Validates the input for <code>buttonType</code> and <code>linkText</code> and adds error-items to the
+     * Validates the input for <code>buttonType</code> and <code>buttonText</code> and adds error-items to the
      * error-list if the validation fails.
      *
      * @return void
@@ -25,7 +25,7 @@ class ContentBoxSettings extends DashboardPageController
     public function validate(): void
     {
         $buttonType = $this->request->request('buttonType');
-        $linkText = $this->request->request('linkText');
+        $buttonText = $this->request->request('buttonText');
 
         if (empty($buttonType)) {
             $this->error->add(tc('tgs_content-box', 'The field "Button-Type" is required.'));
@@ -49,20 +49,20 @@ class ContentBoxSettings extends DashboardPageController
             }
         }
 
-        if (empty($linkText)) {
+        if (empty($buttonText)) {
             $this->error->add(tc('tgs_content-box', 'The field "Default Button-Text" is required.'));
         } else {
-            if (strlen($linkText) > 255) {
+            if (strlen($buttonText) > 255) {
                 $this->error->add(tc(
                     'tgs_content-box',
                     'The field "Default Button-Text" may contain a maximum of 255 characters. Characters used: %s',
-                    strlen($linkText)
+                    strlen($buttonText)
                 ));
             }
         }
     }
     /**
-     * Validate and save the <code>buttonType</code> and <code>linkText</code> values
+     * Validate and save the <code>buttonType</code> and <code>buttonText</code> values
      * settings to the config.
      *
      * @return RedirectResponse
@@ -78,10 +78,10 @@ class ContentBoxSettings extends DashboardPageController
             /** @var \Concrete\Core\Config\Repository\Liaison $config */
             $config = $this->app->make('config');
             $buttonType = $this->request->request('buttonType');
-            $linkText = $this->request->request('linkText');
+            $buttonText = $this->request->request('buttonText');
 
             $config->save(static::CONFIG_NAMESPACE . 'buttonType', $buttonType);
-            $config->save(static::CONFIG_NAMESPACE . 'linkText', $linkText);
+            $config->save(static::CONFIG_NAMESPACE . 'buttonText', $buttonText);
 
             $this->flash('success', tc('tgs_content-box', 'Settings updated'));
         }
@@ -96,6 +96,6 @@ class ContentBoxSettings extends DashboardPageController
         $config = $this->app->make('config');
 
         $this->set('buttonType', $config->get(static::CONFIG_NAMESPACE . 'buttonType'));
-        $this->set('linkText', $config->get(static::CONFIG_NAMESPACE . 'linkText'));
+        $this->set('buttonText', $config->get(static::CONFIG_NAMESPACE . 'buttonText'));
     }
 }

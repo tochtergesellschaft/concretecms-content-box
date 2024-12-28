@@ -78,14 +78,14 @@ class ContentBox implements \JsonSerializable
      */
     private string $link;
     /**
-     * The link-text of the link. This value is commonly used as button-text. If no text was
+     * The button-text of the link. This value is commonly used as button-text. If no text was
      * set via the block-form the fallback value of the config<br>
-     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkText');</code><br>
+     * <code>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</code><br>
      * will be used.
      *
-     * @var string $linkText
+     * @var string $buttonText
      */
-    private string $linkText;
+    private string $buttonText;
     /**
      * The link-type of the selected link. This value is used to detect which type of link
      * the user has selected. Values are outsourced here<br>
@@ -124,6 +124,10 @@ class ContentBox implements \JsonSerializable
     {
         $this->blockId = $blockId;
     }
+    public function setButtonText($buttonText): void
+    {
+        $this->buttonText = $buttonText;
+    }
     public function setButtonType($buttonType): void
     {
         $this->buttonType = $buttonType;
@@ -160,10 +164,6 @@ class ContentBox implements \JsonSerializable
     {
         $this->link = $link ?? '';
     }
-    public function setLinkText($linkText): void
-    {
-        $this->linkText = $linkText;
-    }
     public function setLinkType($linkType): void
     {
         $this->linkType = $linkType;
@@ -189,6 +189,18 @@ class ContentBox implements \JsonSerializable
     public function getBlockId(): ?int
     {
         return $this->blockId;
+    }
+    /**
+     * The button-text of the link. This value is commonly used as button-text. If no text was
+     * set via the block-form the fallback value of the config<br>
+     * <code>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</code><br>
+     * will be used.
+     *
+     * @return string
+     */
+    public function getButtonText(): string
+    {
+        return $this->buttonText;
     }
     /**
      * The button-type (or button-color). This is commonly a bootstrap color css-class
@@ -292,18 +304,6 @@ class ContentBox implements \JsonSerializable
     public function getLinkRel(): string
     {
         return $this->linkTarget === '_blank' ? 'noopener noreferrer' : '';
-    }
-    /**
-     * The link-text of the link. This value is commonly used as button-text. If no text was
-     * set via the block-form the fallback value of the config<br>
-     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkText');</code><br>
-     * will be used.
-     *
-     * @return string
-     */
-    public function getLinkText(): string
-    {
-        return $this->linkText;
     }
     /**
      * The link-type of the selected link. This value is used to detect which type of link

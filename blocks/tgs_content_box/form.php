@@ -78,8 +78,8 @@ echo $userInterface->tabs([
         </div>
         <div class="form-group mb-3">
             <?php
-            echo $form->label('linkText', tc('tgs_content-box', 'Button-Text'));
-            echo $form->text('linkText', $cb->getLinkText());
+            echo $form->label('buttonText', tc('tgs_content-box', 'Button-Text'));
+            echo $form->text('buttonText', $cb->getButtonText());
             ?>
         </div>
         <?php if ($themeColorCollection) { ?>

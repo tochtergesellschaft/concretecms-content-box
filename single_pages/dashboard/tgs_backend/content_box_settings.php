@@ -4,8 +4,8 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 
 /** @var \Concrete\Core\Form\Service\Form $form */
 /** @var \Concrete\Core\Page\View\PageView $view */
+/** @var string $buttonText */
 /** @var string $buttonType */
-/** @var string $linkText */
 ?>
 <form action="<?php echo $view->action('save'); ?>"
       class="ccm-dashboard-content-form"
@@ -19,8 +19,8 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
     </div>
     <div class="mb-3">
         <?php
-        echo $form->label('linkText', tc('tgs_content-box', 'Default Button-Text'));
-        echo $form->text('linkText', $linkText);
+        echo $form->label('buttonText', tc('tgs_content-box', 'Default Button-Text'));
+        echo $form->text('buttonText', $buttonText);
         ?>
     </div>
     <div class="ccm-dashboard-form-actions-wrapper">

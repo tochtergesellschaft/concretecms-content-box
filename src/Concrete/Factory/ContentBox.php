@@ -36,6 +36,7 @@ class ContentBox
         /** @var \Concrete\Package\TgsContentBox\Model\ContentBox $cb */
         $cb = app('tgs/contentbox/model/contentbox');
         $cb->setBlockId($data['blockId']);
+        $cb->setButtonText($transformer->buttonText($data['buttonText']));
         $cb->setButtonType($transformer->buttonType($data['buttonType']));
         $cb->setImageFile($image);
         $cb->setImageAlt($data['imgAlt']);
@@ -44,7 +45,6 @@ class ContentBox
         $cb->setImageId($hasImage ? $data['imgId'] : null);
         $cb->setImagePath($imagePath);
         $cb->setImageLegend($data['imgLegend']);
-        $cb->setLinkText($transformer->linkText($data['linkText']));
         $cb->setLinkType($data['linkType']);
         $cb->setLinkValue($data['linkValue']);
         $cb->setLinkTarget($data['linkTarget']);
