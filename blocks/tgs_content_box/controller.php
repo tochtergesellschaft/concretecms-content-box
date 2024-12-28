@@ -3,6 +3,7 @@
 namespace Concrete\Package\TgsContentBox\Block\TgsContentBox;
 
 use Concrete\Core\Block\BlockController;
+use Concrete\Core\Error\ErrorList\ErrorList;
 use Concrete\Core\Page\Theme\Theme;
 
 defined('C5_EXECUTE') or die(_('Access Denied.'));
@@ -52,6 +53,9 @@ class Controller extends BlockController
     {
 		return tc('tgs_content-box', 'Add image, text and button with only one block.');
 	}
+    /**
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function add(): void
     {
         $this->prepareAddEdit();
@@ -61,13 +65,16 @@ class Controller extends BlockController
 
         $this->set('buttonType', $transformer->buttonType());
     }
+    /**
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     public function edit(): void
     {
         $this->prepareAddEdit();
     }
-    public function validate($args)
+    public function validate($args): ErrorList
     {
-        /** @var \Concrete\Core\Error\ErrorList\ErrorList $errList */
+        /** @var ErrorList $errList */
         $errList = parent::validate($args);
 
         // we need to validate the "linkText" because the db-column "linkText" can save only 255 characters.
