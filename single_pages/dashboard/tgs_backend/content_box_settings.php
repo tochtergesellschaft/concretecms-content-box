@@ -10,7 +10,7 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 <form action="<?php echo $view->action('save'); ?>"
       class="ccm-dashboard-content-form"
       method="post"
-      id="mesch-spacer-settings">
+      id="tgs-content-box-settings">
     <div class="mb-3">
         <?php
         echo $form->label('buttonType', tc('tgs_content-box', 'Fallback Button-Type'));
