@@ -44,7 +44,7 @@ class ContentBoxSettings extends DashboardPageController
             } elseif (preg_match('/^[0-9]/', $buttonType) === 1) {
                 $this->error->add(tc(
                     'tgs_content-box',
-                    'The field "Button-Type" must not with a number.'
+                    'The field "Button-Type" must not start with a number.'
                 ));
             }
         }
