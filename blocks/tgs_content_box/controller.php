@@ -78,11 +78,16 @@ class Controller extends BlockController
         /** @var ErrorList $errList */
         $errList = parent::validate($args);
 
-        // we need to validate the "linkText" because the db-column "linkText" can save only 255 characters.
-        if (strlen($args['linkText']) > 255) {
-            $msg = 'The "Link-Text" is too long (max. 255 characters). Current length: %s';
+        // we need to validate the "linkText" (button-text) because the db-column "linkText"
+        // can save only 255 characters.
+        if (isset($args['linkText'])) {
+            if (strlen($args['linkText']) > 255) {
+                $msg = 'The "Link-Text" is too long (max. 255 characters). Current length: %s';
 
-            $errList->add(tc('tgs_content-box', $msg, strlen($args['imgAlt'])));
+                $errList->add(tc('tgs_content-box', $msg, strlen($args['linkText'])));
+            }
+        } else {
+            $errList->add(tc('tgs_content-box', 'The field "Link-Text" is required.'));
         }
 
         return $errList;
@@ -106,7 +111,7 @@ class Controller extends BlockController
             $args
         );
 
-        $args['text'] = $transformer->richTextEncode($args['text']);
+        $args['text'] = isset($args['text']) ? $transformer->richTextEncode($args['text']) : '';
         $args['imgId'] = !empty($args['imgId']) ? $args['imgId'] : 0;
         $args = $args + [
             'linkType' => $linkType,
