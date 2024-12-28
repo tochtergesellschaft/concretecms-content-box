@@ -5,6 +5,7 @@ namespace Concrete\Package\TgsContentBox\Block\TgsContentBox;
 use Concrete\Core\Block\BlockController;
 use Concrete\Core\Error\ErrorList\ErrorList;
 use Concrete\Core\Page\Theme\Theme;
+use Illuminate\Contracts\Container\BindingResolutionException;
 
 defined('C5_EXECUTE') or die(_('Access Denied.'));
 
@@ -54,7 +55,7 @@ class Controller extends BlockController
 		return tc('tgs_content-box', 'Add image, text and button with only one block.');
 	}
     /**
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
     public function add(): void
     {
@@ -66,7 +67,7 @@ class Controller extends BlockController
         $this->set('buttonType', $transformer->buttonType());
     }
     /**
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
     public function edit(): void
     {
@@ -86,6 +87,9 @@ class Controller extends BlockController
 
         return $errList;
     }
+    /**
+     * @throws BindingResolutionException
+     */
     public function save($args): void
     {
         /** @var \Concrete\Package\TgsContentBox\Service\FormUtils $utils */
@@ -124,7 +128,7 @@ class Controller extends BlockController
      * Set some default values/helpers when adding or editing the current block-instance.
      *
      * @return void
-     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws BindingResolutionException
      */
     protected function prepareAddEdit(): void
     {
