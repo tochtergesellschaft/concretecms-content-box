@@ -18,9 +18,11 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
                 $imageTag->setAttribute("width", $file->getAttribute('width'));
                 $imageTag->setAttribute("height", $file->getAttribute('height'));
                 $imageTag->setAttribute('alt', t($cb->getImageAlt()));
-                $imageTag->addClass('img');
-                $imageTag->addClass('img-fluid');
-                $imageTag->addClass('img-responsive');
+                $imageTag->addClass('img img-fluid img-responsive');
+
+                if ($file->getApprovedVersion()->getTypeObject()->isSVG()) {
+                    $imageTag->addClass('ccm-svg');
+                }
                 ?>
                 <?php print $imageTag; ?>
                 <?php if (!empty($cb->getImageLegend())) { ?>

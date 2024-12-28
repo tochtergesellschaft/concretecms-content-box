@@ -12,23 +12,25 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
                 <?php if ($cb->hasImage()) { ?>
                 <div class="tgs-content-box-media">
                     <figure>
-                    <?php
-                    /** @var \Concrete\Core\Html\Image $htmlImage */
-                    $file = $cb->getImageFile();
-                    $htmlImage = app('html/image', ['f' => $file]);
+                        <?php
+                        /** @var \Concrete\Core\Html\Image $htmlImage */
+                        $file = $cb->getImageFile();
+                        $htmlImage = app('html/image', ['f' => $file]);
 
-                    $imageTag = $htmlImage->getTag();
-                    $imageTag->setAttribute("width", $file->getAttribute('width'));
-                    $imageTag->setAttribute("height", $file->getAttribute('height'));
-                    $imageTag->setAttribute('alt', t($cb->getImageAlt()));
-                    $imageTag->addClass('img');
-                    $imageTag->addClass('img-fluid');
-                    $imageTag->addClass('img-responsive');
-                    ?>
-                    <?php print $imageTag; ?>
-                    <?php if (!empty($cb->getImageLegend())) { ?>
-                    <figcaption><?php echo nl2br(t($cb->getImageLegend())); ?></figcaption>
-                    <?php } ?>
+                        $imageTag = $htmlImage->getTag();
+                        $imageTag->setAttribute("width", $file->getAttribute('width'));
+                        $imageTag->setAttribute("height", $file->getAttribute('height'));
+                        $imageTag->setAttribute('alt', t($cb->getImageAlt()));
+                        $imageTag->addClass('img img-fluid img-responsive');
+
+                        if ($file->getApprovedVersion()->getTypeObject()->isSVG()) {
+                            $imageTag->addClass('ccm-svg');
+                        }
+                        ?>
+                        <?php print $imageTag; ?>
+                        <?php if (!empty($cb->getImageLegend())) { ?>
+                        <figcaption><?php echo nl2br(t($cb->getImageLegend())); ?></figcaption>
+                        <?php } ?>
                     </figure>
                 </div>
                 <?php } ?>
