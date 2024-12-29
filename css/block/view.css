@@ -11,3 +11,6 @@
 .ccm-block-tgs-content-box.default figcaption {
   margin-top: 0.5rem;
 }
+.ccm-block-tgs-content-box.default picture {
+  display: inline-block;
+}
