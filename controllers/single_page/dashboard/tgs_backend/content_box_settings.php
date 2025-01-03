@@ -28,8 +28,8 @@ class ContentBoxSettings extends DashboardPageController
     /**
      * Validate the request-input.
      *
-     * Validates the input for <pre>buttonType</pre> and <pre>buttonText</pre> and adds error-items to the
-     * <pre>\Concrete\Core\Error\ErrorList\ErrorList</pre>> if the validation fails.
+     * Validates the input for <code>buttonType</code> and <code>buttonText</code> and adds error-items to the
+     * <code>\Concrete\Core\Error\ErrorList\ErrorList</code> if the validation fails.
      *
      * @return void
      */

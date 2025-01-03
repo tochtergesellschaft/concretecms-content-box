@@ -9,10 +9,10 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 class ContentBox
 {
     /**
-     * Creates a <pre>ContentBox</pre> model instance.
+     * Creates a ContentBox-Model instance.
      *
-     * This method creates a <pre>ContentBox</pre> model instance with the given data from the block.
-     * If no data was found this method handles also fallback values. Using the <br>
+     * This method creates a **ContentBox** model instance with the given data from the block.
+     * If no data was found this method handles also fallback values. Using the
      * <pre>\Concrete\Package\TgsContentBox\Service\Transformer</pre> helper class as example values
      * coming from the database are transformed into a user-friendly format.
      *
