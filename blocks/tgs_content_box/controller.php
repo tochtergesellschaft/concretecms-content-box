@@ -204,7 +204,7 @@ class Controller extends BlockController
      * Get the relevant block-data.
      *
      * Get the relevant block-data as array to build a<br>
-     * <code>\Concrete\Package\TgsContentBox\Model\ContentBox</code> instance.
+     * <pre>\Concrete\Package\TgsContentBox\Model\ContentBox</pre> instance.
      *
      * @return array
      */

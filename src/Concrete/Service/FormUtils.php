@@ -26,7 +26,7 @@ class FormUtils implements ApplicationAwareInterface
     }
 
     /**
-     * Get the <code>UserInterface</code>> helper class.
+     * Get the <pre>UserInterface</pre>> helper class.
      *
      * @return UserInterface
      * @throws BindingResolutionException
@@ -37,7 +37,7 @@ class FormUtils implements ApplicationAwareInterface
     }
 
     /**
-     * Get the <code>FileManager</code> helper class.
+     * Get the <pre>>FileManager</pre> helper class.
      *
      * @return FileManager
      * @throws BindingResolutionException
@@ -48,7 +48,7 @@ class FormUtils implements ApplicationAwareInterface
     }
 
     /**
-     * Get the <code>DestinationPicker</code> helper class.
+     * Get the <pre>>DestinationPicker</pre> helper class.
      *
      * @return DestinationPicker
      * @throws BindingResolutionException

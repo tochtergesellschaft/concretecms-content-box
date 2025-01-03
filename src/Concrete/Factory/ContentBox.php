@@ -9,11 +9,11 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 class ContentBox
 {
     /**
-     * Creates a <code>ContentBox</code> model instance.
+     * Creates a <pre>ContentBox</pre> model instance.
      *
-     * This method creates a <code>ContentBox</code> model instance with the given data from the block.
+     * This method creates a <pre>ContentBox</pre> model instance with the given data from the block.
      * If no data was found this method handles also fallback values. Using the <br>
-     * <code>\Concrete\Package\TgsContentBox\Service\Transformer</code> helper class as example values
+     * <pre>\Concrete\Package\TgsContentBox\Service\Transformer</pre> helper class as example values
      * coming from the database are transformed into a user-friendly format.
      *
      * @param array $data

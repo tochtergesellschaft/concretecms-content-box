@@ -20,7 +20,7 @@ class ContentBox implements \JsonSerializable
     /**
      * The button-type (button-color).
      *
-     * Selectable values are collected from the page-theme <code>getColorCollection()</code> method.
+     * Selectable values are collected from the page-theme <pre>getColorCollection()</pre> method.
      *
      * @var string $buttonType
      */
@@ -62,7 +62,7 @@ class ContentBox implements \JsonSerializable
     /**
      * The image-id.
      *
-     * The image-id of the selected image. <code>null</code> if no image was selected or the image
+     * The image-id of the selected image. <pre>null</pre> if no image was selected or the image
      * was deleted since the block was saved.
      *
      * @var int|null $imageId
@@ -87,8 +87,8 @@ class ContentBox implements \JsonSerializable
     /**
      * The link-url.
      *
-     * This value can be used as example in <code>href</code> html attributes.
-     * This value will be built depending on the <code>$linkValue</code> property of this model.
+     * This value can be used as example in <pre>href</pre> html attributes.
+     * This value will be built depending on the <pre>$linkValue</pre> property of this model.
      * Inside the database the page-id, file-id or the external-url will be saved. Therefore,
      * the link-url must be built differently sometimes.
      *
@@ -100,7 +100,7 @@ class ContentBox implements \JsonSerializable
      *
      * The button-text of the link. This value is commonly used as button-text. If no text was
      * set via the block-form the fallback value of the config<br>
-     * <code>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</code><br>
+     * <pre>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</pre><br>
      * will be used.
      *
      * @var string $buttonText
@@ -111,7 +111,7 @@ class ContentBox implements \JsonSerializable
      *
      * The link-type of the selected link. This value is used to detect which type of link
      * the user has selected. Values are outsourced here<br>
-     * <code>Concrete\Package\TgsContentBox\Definition\LinkType</code>
+     * <pre>Concrete\Package\TgsContentBox\Definition\LinkType</pre>
      *
      * @var string|null $linkType
      */
@@ -121,7 +121,7 @@ class ContentBox implements \JsonSerializable
      *
      * The raw link-value of the selected link. This can be the page-id, file-id, the external-link
      * or nothing (if no link was selected/set). This value can not be used directly as example
-     * inside html href attribute. Use the <code>$this->getLink()</code> method to get the
+     * inside html href attribute. Use the <pre>$this->getLink()</pre> method to get the
      * transformer link-url.
      *
      * @var string $linkValue
@@ -130,9 +130,9 @@ class ContentBox implements \JsonSerializable
     /**
      * The link-target.
      *
-     * The link-target of the link. This is as default <code>_self</code> or <code>_blank</code>
+     * The link-target of the link. This is as default <pre>_self</pre> or <pre>_blank</pre>
      * The values can be set in this config:<br>
-     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</code>
+     * <pre>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</pre>
      *
      * @var string $linkTarget
      */
@@ -141,7 +141,7 @@ class ContentBox implements \JsonSerializable
      * The text.
      *
      * The text. This is rich-text and not only plain-text. Therefore, print this value inside a
-     * <code><div></div></code> (or similar tag) and not inside as example <code><p></p></code>
+     * <pre><div></div></pre> (or similar tag) and not inside as example <pre><p></p></pre>
      * because this can cause invalid html code (no paragraph inside paragraph and so on...).
      *
      * @var string|null $text
@@ -240,7 +240,7 @@ class ContentBox implements \JsonSerializable
      *
      * This value is commonly used as button-text. If no text was set via the block-form
      * the fallback value of the config<br>
-     * <code>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</code><br>
+     * <pre>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</pre><br>
      * will be used.
      *
      * @return string
@@ -254,7 +254,7 @@ class ContentBox implements \JsonSerializable
      * The button-type (or button-color).
      *
      * This is commonly a bootstrap color css-class
-     * as example <code>primary</code> or <code>secondary</code>.
+     * as example <pre>primary</pre> or <pre>secondary</pre>.
      *
      * @return string
      */
@@ -315,7 +315,7 @@ class ContentBox implements \JsonSerializable
 
     /**
      * The image-id of the selected image.
-     * <code>null</code> if no image was selected or the image was deleted since the block was saved.
+     * <pre>null</pre> if no image was selected or the image was deleted since the block was saved.
      *
      * @return int|null
      */
@@ -354,8 +354,8 @@ class ContentBox implements \JsonSerializable
     /**
      * The link-url.
      *
-     * This value can be used as example in <code>href</code> html attributes.
-     * This value will be built depending on the <code>$linkValue</code> property of this model.
+     * This value can be used as example in <pre>href</pre> html attributes.
+     * This value will be built depending on the <pre>$linkValue</pre> property of this model.
      * Inside the database the page-id, file-id or the external-url will be saved. Therefore,
      * the link-url must be built differently sometimes.
      *
@@ -369,7 +369,7 @@ class ContentBox implements \JsonSerializable
     /**
      * The link-rel.
      *
-     * Depending on the <code>linkTarget</code> property.
+     * Depending on the <pre>linkTarget</pre> property.
      *
      * @return string
      */
@@ -383,7 +383,7 @@ class ContentBox implements \JsonSerializable
      *
      * This value is used to detect which type of link the user has selected.
      * Values are outsourced here<br>
-     * <code>Concrete\Package\TgsContentBox\Definition\LinkType</code>
+     * <pre>Concrete\Package\TgsContentBox\Definition\LinkType</pre>
      *
      * @return string|null
      */
@@ -397,7 +397,7 @@ class ContentBox implements \JsonSerializable
      *
      * This can be the page-id, file-id, the external-link
      * or nothing (if no link was selected/set). This value can not be used directly as example
-     * inside html href attribute. Use the <code>$this->getLink()</code> method to get the
+     * inside html href attribute. Use the <pre>$this->getLink()</pre> method to get the
      * transformer link-url.
      *
      * @return string
@@ -410,8 +410,8 @@ class ContentBox implements \JsonSerializable
     /**
      * The link-target of the link.
      *
-     * This is as default <code>_self</code> or <code>_blank</code> The values can be set in this config:<br>
-     * <code>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</code>
+     * This is as default <pre>_self</pre> or <pre>_blank</pre> The values can be set in this config:<br>
+     * <pre>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</pre>
      *
      * @return string
      */
@@ -424,7 +424,7 @@ class ContentBox implements \JsonSerializable
      * The text.
      *
      * This is rich-text and not only plain-text. Therefore, print this value inside a
-     * <code><div></div></code> (or similar tag) and not inside as example <code><p></p></code>
+     * <pre><div></div></pre> (or similar tag) and not inside as example <pre><p></p></pre>
      * because this can cause invalid html code (no paragraph inside paragraph and so on...).
      *
      * @return string|null
@@ -435,7 +435,7 @@ class ContentBox implements \JsonSerializable
     }
 
     /**
-     * Wrapper for <code>$this->hasImage()</code> method.
+     * Wrapper for <pre>$this->hasImage()</pre> method.
      *
      * True, if an image was selected and the corresponding image-file object was found.
      * False otherwise. False as example when the file was deleted since the image was
@@ -449,7 +449,7 @@ class ContentBox implements \JsonSerializable
     }
 
     /**
-     * Wrapper for <code>$this->getHasLink()</code> method.
+     * Wrapper for <pre>$this->getHasLink()</pre> method.
      *
      * True, if a link was selected and the link-url could be built and the link-url is not empty.
      * False, otherwise.

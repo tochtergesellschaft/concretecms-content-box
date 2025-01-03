@@ -16,21 +16,21 @@ enum LinkType: string
     /**
      * Represents a link to an internal-page.
      *
-     * The <code>\Concrete\Core\Form\Service\DestinationPicker\DestinationPicker</code> ui will handle
+     * The <pre>\Concrete\Core\Form\Service\DestinationPicker\DestinationPicker</pre> ui will handle
      * the selection of a page from the sitemap in the frontend.
      */
     case PAGE = 'page';
     /**
      * Represents a link to a file.
      *
-     * The <code>\Concrete\Core\Form\Service\DestinationPicker\DestinationPicker</code> ui will handle
+     * The <pre>\Concrete\Core\Form\Service\DestinationPicker\DestinationPicker</pre> ui will handle
      * the selection of a file from the file-manager in the frontend.
      */
     case FILE = 'file';
     /**
      * Represents a link to an external URL.
      *
-     * The <code>\Concrete\Core\Form\Service\DestinationPicker\DestinationPicker</code> ui will show
+     * The <pre>\Concrete\Core\Form\Service\DestinationPicker\DestinationPicker</pre> ui will show
      * a simple text-input form-field in the frontend the user can paste the external url inside.
      */
     case EXTERNAL = 'external_url';
