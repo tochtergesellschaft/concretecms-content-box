@@ -24,47 +24,47 @@ class Controller extends BlockController
     /**
      * @var string|null $buttonText
      */
-    protected ?string $buttonText;
+    protected $buttonText;
 
     /**
      * @var string|null $buttonType
      */
-    protected ?string $buttonType;
+    protected $buttonType;
 
     /**
      * @var string|null $imgAlt
      */
-    protected ?string $imgAlt;
+    protected $imgAlt;
 
     /**
      * @var int|null $imgId
      */
-    protected ?int $imgId;
+    protected $imgId;
 
     /**
      * @var string|null $imgLegend
      */
-    protected ?string $imgLegend;
+    protected $imgLegend;
 
     /**
      * @var string $linkTarget
      */
-    protected string $linkTarget;
+    protected $linkTarget;
 
     /**
      * @var string|null $linkType
      */
-    protected ?string $linkType;
+    protected $linkType;
 
     /**
      * @var string|null $linkValue
      */
-    protected ?string $linkValue;
+    protected $linkValue;
 
     /**
      * @var string|null $text
      */
-    protected ?string $text;
+    protected $text;
 
     /**
      * {@inheritDoc}
