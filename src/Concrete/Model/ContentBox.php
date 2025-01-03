@@ -11,38 +11,48 @@ class ContentBox implements \JsonSerializable
 {
     /**
      * The block-id of the current block-instance.
+     *
      * When adding a new block to the page the block-id's initial value is null.
      *
      * @var int|null $blockId
      */
     private ?int $blockId;
     /**
-     * The button-type (button-color). Selectable values are collected from the page-theme
-     * <code>getColorCollection()</code> method.
+     * The button-type (button-color).
+     *
+     * Selectable values are collected from the page-theme <code>getColorCollection()</code> method.
      *
      * @var string $buttonType
      */
     private string $buttonType;
     /**
-     * The image alternative-text. This is only plain-text and not rich-text.
+     * The image alternative-text.
+     *
+     * This text-value is only plain-text and not rich-text.
      *
      * @var string|null $imageAlt
      */
     private ?string $imageAlt;
     /**
-     * The image-file object if an image was selected in the block-form.
+     * The image-file object.
+     *
+     * Only ff an image was selected in the block-form.
      *
      * @var File|null $imageFile
      */
     private ?File $imageFile;
     /**
+     * If an image was selected and found at the moment of use.
+     *
      * True, if an image was selected and the corresponding image-file object was
-     * found. False otherwise.
+     * found at the moment of use. False otherwise.
      *
      * @var bool $hasImage
      */
     private bool $hasImage;
     /**
+     * If a link was selected and the url is not empty.
+     *
      * True, if a link was selected and the link-url could be built and the link-url is not empty.
      * False, otherwise.
      *
@@ -50,6 +60,8 @@ class ContentBox implements \JsonSerializable
      */
     private bool $hasLink;
     /**
+     * The image-id.
+     *
      * The image-id of the selected image. <code>null</code> if no image was selected or the image
      * was deleted since the block was saved.
      *
@@ -57,19 +69,25 @@ class ContentBox implements \JsonSerializable
      */
     private ?int $imageId;
     /**
+     * The image-path.
+     *
      * The image-path of the selected image.
      *
      * @var string|null $imagePath
      */
     private ?string $imagePath;
     /**
-     * The image-legend. This is only plain-text and not rich-text.
+     * The image-legend.
+     *
+     * This is only plain-text and not rich-text.
      *
      * @var string|null $imageLegend
      */
     private ?string $imageLegend;
     /**
-     * The link-url. This value can be used as example in <code>href</code> html attributes.
+     * The link-url.
+     *
+     * This value can be used as example in <code>href</code> html attributes.
      * This value will be built depending on the <code>$linkValue</code> property of this model.
      * Inside the database the page-id, file-id or the external-url will be saved. Therefore,
      * the link-url must be built differently sometimes.
@@ -78,6 +96,8 @@ class ContentBox implements \JsonSerializable
      */
     private string $link;
     /**
+     * The button-text.
+     *
      * The button-text of the link. This value is commonly used as button-text. If no text was
      * set via the block-form the fallback value of the config<br>
      * <code>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</code><br>
@@ -87,6 +107,8 @@ class ContentBox implements \JsonSerializable
      */
     private string $buttonText;
     /**
+     * The link-type.
+     *
      * The link-type of the selected link. This value is used to detect which type of link
      * the user has selected. Values are outsourced here<br>
      * <code>Concrete\Package\TgsContentBox\Definition\LinkType</code>
@@ -95,6 +117,8 @@ class ContentBox implements \JsonSerializable
      */
     private ?string $linkType;
     /**
+     * The raw link-value.
+     *
      * The raw link-value of the selected link. This can be the page-id, file-id, the external-link
      * or nothing (if no link was selected/set). This value can not be used directly as example
      * inside html href attribute. Use the <code>$this->getLink()</code> method to get the
@@ -104,6 +128,8 @@ class ContentBox implements \JsonSerializable
      */
     private string $linkValue;
     /**
+     * The link-target.
+     *
      * The link-target of the link. This is as default <code>_self</code> or <code>_blank</code>
      * The values can be set in this config:<br>
      * <code>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</code>
@@ -112,6 +138,8 @@ class ContentBox implements \JsonSerializable
      */
     private string $linkTarget;
     /**
+     * The text.
+     *
      * The text. This is rich-text and not only plain-text. Therefore, print this value inside a
      * <code><div></div></code> (or similar tag) and not inside as example <code><p></p></code>
      * because this can cause invalid html code (no paragraph inside paragraph and so on...).
@@ -124,64 +152,80 @@ class ContentBox implements \JsonSerializable
     {
         $this->blockId = $blockId;
     }
+
     public function setButtonText($buttonText): void
     {
         $this->buttonText = $buttonText;
     }
+
     public function setButtonType($buttonType): void
     {
         $this->buttonType = $buttonType;
     }
+
     public function setImageAlt($imageAlt): void
     {
         $this->imageAlt = $imageAlt;
     }
+
     public function setImageFile($imageFile): void
     {
         $this->imageFile = $imageFile;
     }
+
     public function setHasImage($hasImage): void
     {
         $this->hasImage = $hasImage;
     }
+
     public function setHasLink($hasLink): void
     {
         $this->hasLink = $hasLink;
     }
+
     public function setImageId($imageId): void
     {
         $this->imageId = $imageId;
     }
+
     public function setImagePath($imagePath): void
     {
         $this->imagePath = $imagePath;
     }
+
     public function setImageLegend($imageLegend): void
     {
         $this->imageLegend = $imageLegend;
     }
+
     public function setLink($link): void
     {
         $this->link = $link ?? '';
     }
+
     public function setLinkType($linkType): void
     {
         $this->linkType = $linkType;
     }
+
     public function setLinkValue($linkValue): void
     {
         $this->linkValue = $linkValue ?? '';
     }
+
     public function setLinkTarget($linkTarget): void
     {
         $this->linkTarget = $linkTarget ?? '';
     }
+
     public function setText($text): void
     {
         $this->text = $text;
     }
+
     /**
      * The block-id of the current block-instance.
+     *
      * When adding a new block to the page the block-id's initial value is null.
      *
      * @return int|null
@@ -190,9 +234,12 @@ class ContentBox implements \JsonSerializable
     {
         return $this->blockId;
     }
+
     /**
-     * The button-text of the link. This value is commonly used as button-text. If no text was
-     * set via the block-form the fallback value of the config<br>
+     * The button-text of the link.
+     *
+     * This value is commonly used as button-text. If no text was set via the block-form
+     * the fallback value of the config<br>
      * <code>app('config')->get('tgs_content_box::general.blockSettings.buttonText');</code><br>
      * will be used.
      *
@@ -202,8 +249,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->buttonText;
     }
+
     /**
-     * The button-type (or button-color). This is commonly a bootstrap color css-class
+     * The button-type (or button-color).
+     *
+     * This is commonly a bootstrap color css-class
      * as example <code>primary</code> or <code>secondary</code>.
      *
      * @return string
@@ -212,8 +262,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->buttonType;
     }
+
     /**
-     * The image alternative-text. This is only plain-text and not rich-text.
+     * The image alternative-text.
+     *
+     * This is only plain-text and not rich-text.
      *
      * @return string|null
      */
@@ -221,8 +274,10 @@ class ContentBox implements \JsonSerializable
     {
         return $this->imageAlt;
     }
+
     /**
-     * The image-file object if an image was selected in the block-form.
+     * The image-file object.
+     * Will be collected if an image was selected in the block-form.
      *
      * @return File|null
      */
@@ -230,7 +285,10 @@ class ContentBox implements \JsonSerializable
     {
         return $this->imageFile;
     }
+
     /**
+     * If an image was selected and found at the moment of use.
+     *
      * True, if an image was selected and the corresponding image-file object was found.
      * False otherwise. False as example when the file was deleted since the image was
      * selected inside the block-form.
@@ -241,7 +299,10 @@ class ContentBox implements \JsonSerializable
     {
         return $this->hasImage;
     }
+
     /**
+     * If a link was selected and the url is not empty.
+     *
      * True, if a link was selected and the link-url could be built and the link-url is not empty.
      * False, otherwise.
      *
@@ -251,9 +312,10 @@ class ContentBox implements \JsonSerializable
     {
         return $this->hasLink;
     }
+
     /**
-     * The image-id of the selected image. <code>null</code> if no image was selected or the image
-     * was deleted since the block was saved.
+     * The image-id of the selected image.
+     * <code>null</code> if no image was selected or the image was deleted since the block was saved.
      *
      * @return int|null
      */
@@ -261,6 +323,7 @@ class ContentBox implements \JsonSerializable
     {
         return $this->imageId;
     }
+
     /**
      * The image-path of the selected image with option to include the base-url.
      *
@@ -275,8 +338,11 @@ class ContentBox implements \JsonSerializable
 
         return $this->imagePath;
     }
+
     /**
-     * The image-legend. This is only plain-text and not rich-text.
+     * The image-legend.
+     *
+     * This is only plain-text and not rich-text.
      *
      * @return string|null
      */
@@ -284,8 +350,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->imageLegend;
     }
+
     /**
-     * The link-url. This value can be used as example in <code>href</code> html attributes.
+     * The link-url.
+     *
+     * This value can be used as example in <code>href</code> html attributes.
      * This value will be built depending on the <code>$linkValue</code> property of this model.
      * Inside the database the page-id, file-id or the external-url will be saved. Therefore,
      * the link-url must be built differently sometimes.
@@ -296,8 +365,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->link;
     }
+
     /**
-     * The link-rel depending on the <code>linkTarget</code> property.
+     * The link-rel.
+     *
+     * Depending on the <code>linkTarget</code> property.
      *
      * @return string
      */
@@ -305,9 +377,12 @@ class ContentBox implements \JsonSerializable
     {
         return $this->linkTarget === '_blank' ? 'noopener noreferrer' : '';
     }
+
     /**
-     * The link-type of the selected link. This value is used to detect which type of link
-     * the user has selected. Values are outsourced here<br>
+     * The link-type of the selected link.
+     *
+     * This value is used to detect which type of link the user has selected.
+     * Values are outsourced here<br>
      * <code>Concrete\Package\TgsContentBox\Definition\LinkType</code>
      *
      * @return string|null
@@ -316,8 +391,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->linkType;
     }
+
     /**
-     * The raw link-value of the selected link. This can be the page-id, file-id, the external-link
+     * The raw link-value of the selected link.
+     *
+     * This can be the page-id, file-id, the external-link
      * or nothing (if no link was selected/set). This value can not be used directly as example
      * inside html href attribute. Use the <code>$this->getLink()</code> method to get the
      * transformer link-url.
@@ -328,9 +406,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->linkValue;
     }
+
     /**
-     * The link-target of the link. This is as default <code>_self</code> or <code>_blank</code>
-     * The values can be set in this config:<br>
+     * The link-target of the link.
+     *
+     * This is as default <code>_self</code> or <code>_blank</code> The values can be set in this config:<br>
      * <code>app('config')->get('tgs_content_box::general.blockSettings.linkTargets');</code>
      *
      * @return string
@@ -339,8 +419,11 @@ class ContentBox implements \JsonSerializable
     {
         return $this->linkTarget;
     }
+
     /**
-     * The text. This is rich-text and not only plain-text. Therefore, print this value inside a
+     * The text.
+     *
+     * This is rich-text and not only plain-text. Therefore, print this value inside a
      * <code><div></div></code> (or similar tag) and not inside as example <code><p></p></code>
      * because this can cause invalid html code (no paragraph inside paragraph and so on...).
      *
@@ -350,8 +433,10 @@ class ContentBox implements \JsonSerializable
     {
         return $this->text;
     }
+
     /**
      * Wrapper for <code>$this->hasImage()</code> method.
+     *
      * True, if an image was selected and the corresponding image-file object was found.
      * False otherwise. False as example when the file was deleted since the image was
      * selected inside the block-form.
@@ -362,8 +447,10 @@ class ContentBox implements \JsonSerializable
     {
         return $this->getHasImage();
     }
+
     /**
      * Wrapper for <code>$this->getHasLink()</code> method.
+     *
      * True, if a link was selected and the link-url could be built and the link-url is not empty.
      * False, otherwise.
      *
@@ -373,6 +460,7 @@ class ContentBox implements \JsonSerializable
     {
         return $this->getHasLink();
     }
+
     public function jsonSerialize(): array
     {
         return [

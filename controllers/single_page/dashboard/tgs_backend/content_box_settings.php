@@ -10,15 +10,26 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 
 class ContentBoxSettings extends DashboardPageController
 {
+    /**
+     * Config-Namespace prefix to the related package file-config.
+     */
     private const CONFIG_NAMESPACE = 'tgs_content_box::general.blockSettings.';
 
+    /**
+     * Get the page-description of the current system-page.
+     *
+     * @return string
+     */
     public function getCollectionDescription(): string
     {
         return tc('tgs_content-box', 'Configure default- and fallback-values for the content-box block.');
     }
+
     /**
+     * Validate the request-input.
+     *
      * Validates the input for <code>buttonType</code> and <code>buttonText</code> and adds error-items to the
-     * error-list if the validation fails.
+     * <code>\Concrete\Core\Error\ErrorList\ErrorList</code>> if the validation fails.
      *
      * @return void
      */
@@ -61,9 +72,12 @@ class ContentBoxSettings extends DashboardPageController
             }
         }
     }
+
     /**
-     * Validate and save the <code>buttonType</code> and <code>buttonText</code> values
-     * settings to the config.
+     * Validate and save the request-input.
+     *
+     * This method validates and saves the <code>buttonType</code> and <code>buttonText</code> values
+     * settings to the file-config.
      *
      * @return RedirectResponse
      * @throws BindingResolutionException
@@ -75,7 +89,7 @@ class ContentBoxSettings extends DashboardPageController
         if ($this->error->has()) {
             $this->flash('error', tc('tgs_content-box', $this->error->toText()));
         } else {
-            /** @var \Concrete\Core\Config\Repository\Liaison $config */
+            /** @var \Concrete\Core\Config\Repository\Repository $config */
             $config = $this->app->make('config');
             $buttonType = $this->request->request('buttonType');
             $buttonText = $this->request->request('buttonText');
@@ -88,6 +102,7 @@ class ContentBoxSettings extends DashboardPageController
 
         return $this->buildRedirect($this->action());
     }
+
     /**
      * @throws BindingResolutionException
      */

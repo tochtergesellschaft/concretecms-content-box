@@ -83,20 +83,20 @@ echo $userInterface->tabs([
             ?>
         </div>
         <?php if ($themeColorCollection) { ?>
-        <div class="form-group mb-3">
-            <?php echo $form->label('buttonType', tc('tgs_content-box', 'Button-Type')); ?>
-            <div data-vue-app="content-box-backend">
-                <concrete-theme-color-input :color-collection='<?php echo json_encode($themeColorCollection); ?>'
-                                            color="<?php echo $cb->getButtonType(); ?>"
-                                            input-name="buttonType"></concrete-theme-color-input>
+            <div class="form-group mb-3">
+                <?php echo $form->label('buttonType', tc('tgs_content-box', 'Button-Type')); ?>
+                <div data-vue-app="content-box-backend">
+                    <concrete-theme-color-input :color-collection='<?php echo json_encode($themeColorCollection); ?>'
+                                                color="<?php echo $cb->getButtonType(); ?>"
+                                                input-name="buttonType"></concrete-theme-color-input>
+                </div>
             </div>
-        </div>
         <?php } ?>
     </div>
 </div>
 <?php // @TODO: outsource js/css into separate asset-files. ?>
 <script type="text/javascript">
-    $(function() {
+    $(function () {
         Concrete.Vue.activateContext('cms', function (Vue, config) {
             new Vue({
                 el: 'div[data-vue-app=content-box-backend]',

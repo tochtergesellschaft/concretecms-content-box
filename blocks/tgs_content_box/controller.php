@@ -16,44 +16,76 @@ class Controller extends BlockController
     protected $btInterfaceHeight = "700";
     protected $btDefaultSet = 'basic';
 
-    /** @var int|null $bID */
+    /**
+     * @var int|null $bID
+     */
     protected $bID;
 
-    /** @var string|null $buttonText */
-    protected $buttonText;
+    /**
+     * @var string|null $buttonText
+     */
+    protected ?string $buttonText;
 
-    /** @var string|null $buttonType */
-    protected $buttonType;
+    /**
+     * @var string|null $buttonType
+     */
+    protected ?string $buttonType;
 
-    /** @var string|null $imgAlt */
-    protected $imgAlt;
+    /**
+     * @var string|null $imgAlt
+     */
+    protected ?string $imgAlt;
 
-    /** @var int|null $imgId */
-    protected $imgId;
+    /**
+     * @var int|null $imgId
+     */
+    protected ?int $imgId;
 
-    /** @var string|null $imgLegend */
-    protected $imgLegend;
+    /**
+     * @var string|null $imgLegend
+     */
+    protected ?string $imgLegend;
 
-    /** @var string $linkTarget */
-    protected $linkTarget;
+    /**
+     * @var string $linkTarget
+     */
+    protected string $linkTarget;
 
-    /** @var string|null $linkType */
-    protected $linkType;
+    /**
+     * @var string|null $linkType
+     */
+    protected ?string $linkType;
 
-    /** @var string|null $linkValue */
-    protected $linkValue;
+    /**
+     * @var string|null $linkValue
+     */
+    protected ?string $linkValue;
 
-    /** @var string|null $text */
-    protected $text;
+    /**
+     * @var string|null $text
+     */
+    protected ?string $text;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @return string
+     */
     public function getBlockTypeName(): string
     {
-		return tc('tgs_content-box', 'Content Box');
-	}
-	public function getBlockTypeDescription(): string
+        return tc('tgs_content-box', 'Content Box');
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @return string
+     */
+    public function getBlockTypeDescription(): string
     {
-		return tc('tgs_content-box', 'Add image, text and button with only one block.');
-	}
+        return tc('tgs_content-box', 'Add image, text and button with only one block.');
+    }
+
     /**
      * @throws BindingResolutionException
      */
@@ -66,6 +98,7 @@ class Controller extends BlockController
 
         $this->set('buttonType', $transformer->buttonType());
     }
+
     /**
      * @throws BindingResolutionException
      */
@@ -73,6 +106,13 @@ class Controller extends BlockController
     {
         $this->prepareAddEdit();
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @param $args
+     * @return ErrorList
+     */
     public function validate($args): ErrorList
     {
         /** @var ErrorList $errList */
@@ -92,7 +132,10 @@ class Controller extends BlockController
 
         return $errList;
     }
+
     /**
+     * {@inheritDoc}
+     *
      * @throws BindingResolutionException
      */
     public function save($args): void
@@ -120,15 +163,17 @@ class Controller extends BlockController
 
         parent::save($args);
     }
+
     public function view(): void
     {
         $this->requireAsset('css', 'tgs/content-box/view');
 
         /** @var \Concrete\Package\TgsContentBox\Model\ContentBox $cb */
         $cb = app('tgs/contentbox/factory/contentbox')->createFrom($this->getBlockData());
-        
+
         $this->set('cb', $cb);
     }
+
     /**
      * Set some default values/helpers when adding or editing the current block-instance.
      *
@@ -154,8 +199,12 @@ class Controller extends BlockController
         $this->set('themeColorCollection', $theme->getColorCollection());
         $this->set('userInterface', $utils->getUserInterface());
     }
+
     /**
-     * Get the relevant block-data as array for later use.
+     * Get the relevant block-data.
+     *
+     * Get the relevant block-data as array to build a<br>
+     * <code>\Concrete\Package\TgsContentBox\Model\ContentBox</code> instance.
      *
      * @return array
      */

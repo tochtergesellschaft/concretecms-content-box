@@ -14,6 +14,9 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 
 class ServiceProvider extends CoreServiceProvider
 {
+    /**
+     * {@inheritDoc}
+     */
     public function register(): void
     {
         $this->app->singleton('tgs/contentbox/form/utils', FormUtils::class);

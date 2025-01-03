@@ -23,10 +23,12 @@ class Transformer implements ApplicationAwareInterface
     {
         $this->app = $application;
     }
+
     /**
-     * Get the current selected button-type (button-color). if no button-type was set we try to get the
-     * first one of the theme color-collection. if no colors where defined we use
-     * the default value "default".
+     * Get the current selected button-type (button-color).
+     *
+     * If no button-type was set we try to get the first one of the theme color-collection.
+     * if no colors where defined we use the default value "default".
      *
      * @param mixed $buttonType
      * @return string
@@ -52,6 +54,7 @@ class Transformer implements ApplicationAwareInterface
 
         return $buttonType;
     }
+
     /**
      * Find an image-ressource by file-id.
      *
@@ -62,10 +65,12 @@ class Transformer implements ApplicationAwareInterface
     {
         return File::getByID($fId);
     }
+
     /**
-     * Get the link-url based on the given link-type. Either the page-id, file-id or the
-     * external-url is stored in the database. We need to handle it different when building
-     * the link-url.
+     * Get the link-url based on the given link-type.
+     *
+     * Either the page-id, file-id or the external-url is stored in the database. We need to handle
+     * it different when building the link-url.
      *
      * @param $linkType
      * @param mixed $value
@@ -93,8 +98,10 @@ class Transformer implements ApplicationAwareInterface
                 return '';
         }
     }
+
     /**
      * Transform encoded rich-text into normal text based on the current page's edit mode status.
+     *
      * This means abstract links are transformed to human-readable links etc.
      *
      * @param string $text The rich text to decode
@@ -110,8 +117,11 @@ class Transformer implements ApplicationAwareInterface
 
         return LinkAbstractor::translateFrom($text);
     }
+
     /**
-     * Transform decoded rich-text. This is required when saving rich-text to the db.
+     * Transform decoded rich-text.
+     *
+     * This is required when saving rich-text to the db.
      *
      * @param string $text The text to encode
      * @return string The encoded rich-text
@@ -122,8 +132,9 @@ class Transformer implements ApplicationAwareInterface
     }
 
     /**
-     * Get a valid button-text. If the link-text was not set get a fallback-value
-     * from the related package-config.
+     * Get a valid button-text.
+     *
+     * If the link-text was not set get a fallback-value from the related package-config.
      *
      * @param $buttonText
      * @return string

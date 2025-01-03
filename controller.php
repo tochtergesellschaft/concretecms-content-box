@@ -16,9 +16,9 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
 
 class Controller extends Package
 {
-	protected string $pkgHandle = 'tgs_content_box';
-	protected $appVersionRequired = '9';
-	protected string $pkgVersion = '0.0.1';
+    protected string $pkgHandle = 'tgs_content_box';
+    protected $appVersionRequired = '9';
+    protected string $pkgVersion = '0.0.1';
     /**
      * @var \Concrete\Core\Entity\Package $pkg
      */
@@ -30,18 +30,29 @@ class Controller extends Package
 
         $this->pkg = app(PackageService::class)->getByHandle($this->pkgHandle);
     }
-	public function getPackageName(): string
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPackageName(): string
     {
-		return tc('tgs_content-box', 'ConcreteCMS - Content Box');
-	}
-	public function getPackageDescription(): string
+        return tc('tgs_content-box', 'ConcreteCMS - Content Box');
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getPackageDescription(): string
     {
-		return tc(
+        return tc(
             'tgs_content-box',
             'Add image, text and button with only one block. Very easy to make custom templates from.'
         );
-	}
+    }
+
     /**
+     * Do some initial package-required stuff.
+     *
      * This method will be executed when the package is loaded. This happens each request.
      * Therefore, we need to keep this method as clean as possible.
      *
@@ -52,17 +63,19 @@ class Controller extends Package
         $this->registerAssets();
         $this->registerServices();
     }
+
     /**
-     * @inheritdoc
+     * {@inheritDoc}
      */
-	public function install(): void
+    public function install(): void
     {
-		$this->pkg = parent::install();
+        $this->pkg = parent::install();
 
         $this->importUpdateContent();
-	}
+    }
+
     /**
-     * @inerhitDoc
+     * {@inheritDoc}
      */
     public function upgrade(): void
     {
@@ -70,13 +83,15 @@ class Controller extends Package
 
         $this->importUpdateContent();
     }
+
     /**
-     * @inheritdoc
+     * {@inheritDoc}
+     *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
      */
-	public function uninstall(): void
+    public function uninstall(): void
     {
-		parent::uninstall();
+        parent::uninstall();
 
         $request = app(Request::class);
 
@@ -84,7 +99,15 @@ class Controller extends Package
             $uninstaller = app(PackageUninstaller::class);
             $uninstaller->deleteDbTables();
         }
-	}
+    }
+
+    /**
+     * Register some js and css assets for later use.
+     *
+     * This way we can outsource js and css files.
+     *
+     * @return void
+     */
     private function registerAssets(): void
     {
         $al = AssetList::getInstance();
@@ -99,13 +122,26 @@ class Controller extends Package
             $this
         );
     }
+
+    /**
+     * Register services.
+     *
+     * @return void
+     */
     private function registerServices(): void
     {
         $pl = new ProviderList($this->app);
         $pl->registerProvider(PackageServiceProvider::class);
     }
+
+    /**
+     * Import and/or update predefined content into the cms.
+     *
+     * @return void
+     */
     private function importUpdateContent(): void
     {
+        /** @var PackageInstaller $installer */
         $installer = app(PackageInstaller::class);
         $installer->installXmlContent();
     }

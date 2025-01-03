@@ -24,7 +24,10 @@ class FormUtils implements ApplicationAwareInterface
     {
         $this->app = $application;
     }
+
     /**
+     * Get the <code>UserInterface</code>> helper class.
+     *
      * @return UserInterface
      * @throws BindingResolutionException
      */
@@ -32,7 +35,10 @@ class FormUtils implements ApplicationAwareInterface
     {
         return $this->app->make(UserInterface::class);
     }
+
     /**
+     * Get the <code>FileManager</code> helper class.
+     *
      * @return FileManager
      * @throws BindingResolutionException
      */
@@ -40,7 +46,10 @@ class FormUtils implements ApplicationAwareInterface
     {
         return $this->app->make(FileManager::class);
     }
+
     /**
+     * Get the <code>DestinationPicker</code> helper class.
+     *
      * @return DestinationPicker
      * @throws BindingResolutionException
      */
@@ -48,6 +57,7 @@ class FormUtils implements ApplicationAwareInterface
     {
         return $this->app->make(DestinationPicker::class);
     }
+
     /**
      * Get the text-editor helper-class with option to deselect editor-tools.
      *
@@ -65,9 +75,11 @@ class FormUtils implements ApplicationAwareInterface
 
         return $editor;
     }
+
     /**
-     * Get the predefined link types to choose from in the block-form. In the external-link-type
-     * the data length is limited to 255 characters.
+     * Get the predefined link types to choose from in the block-form.
+     *
+     * In the external-link-type the data length is limited to 255 characters.
      *
      * @return array
      */
