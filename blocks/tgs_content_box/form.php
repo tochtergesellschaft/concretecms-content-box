@@ -49,8 +49,8 @@ echo $userInterface->tabs([
         </div>
         <div class="form-group mb-3">
             <?php
-            echo $form->label('imgLegend', tc('tgs_content-box', 'Image-Legend'));
-            echo $form->textarea('imgLegend', $cb->getImageLegend(), ['rows' => 5]);
+            echo $form->label('imgCaption', tc('tgs_content-box', 'Image-Caption'));
+            echo $form->textarea('imgCaption', $cb->getImageCaption(), ['rows' => 5]);
             ?>
         </div>
     </div>

@@ -47,9 +47,9 @@ class ContentBox
         $cb->setImageAlt($data['imgAlt']);
         $cb->setHasImage($hasImage);
         $cb->setHasLink(!empty($link));
+        $cb->setImageCaption($data['imgCaption']);
         $cb->setImageId($hasImage ? $data['imgId'] : null);
         $cb->setImagePath($imagePath);
-        $cb->setImageLegend($data['imgLegend']);
         $cb->setLinkType($data['linkType']);
         $cb->setLinkValue($data['linkValue']);
         $cb->setLinkTarget($data['linkTarget']);

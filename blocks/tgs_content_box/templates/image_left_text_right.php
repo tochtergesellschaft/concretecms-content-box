@@ -28,8 +28,8 @@ defined('C5_EXECUTE') or die(_('Access Denied.'));
                             }
                             ?>
                             <?php print $imageTag; ?>
-                            <?php if (!empty($cb->getImageLegend())) { ?>
-                                <figcaption><?php echo nl2br(t($cb->getImageLegend())); ?></figcaption>
+                            <?php if (!empty($cb->getImageCaption())) { ?>
+                                <figcaption><?php echo nl2br(t($cb->getImageCaption())); ?></figcaption>
                             <?php } ?>
                         </figure>
                     </div>

@@ -10,8 +10,8 @@
         <field name="buttonType" type="string" size="255"/>
         <field name="buttonText" type="string" size="255"/>
         <field name="imgAlt" type="text"/>
+        <field name="imgCaption" type="text"/>
         <field name="imgId" type="integer"/>
-        <field name="imgLegend" type="text"/>
         <field name="linkTarget" type="string" size="255"/>
         <field name="linkType" type="string" size="255"/>
         <field name="linkValue" type="text"/>

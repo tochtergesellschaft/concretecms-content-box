@@ -60,6 +60,14 @@ class ContentBox implements \JsonSerializable
      */
     private bool $hasLink;
     /**
+     * The image-caption.
+     *
+     * This is only plain-text and not rich-text.
+     *
+     * @var string|null $imageCaption
+     */
+    private ?string $imageCaption;
+    /**
      * The image-id.
      *
      * The image-id of the selected image. <code>null</code> if no image was selected or the image
@@ -76,14 +84,6 @@ class ContentBox implements \JsonSerializable
      * @var string|null $imagePath
      */
     private ?string $imagePath;
-    /**
-     * The image-legend.
-     *
-     * This is only plain-text and not rich-text.
-     *
-     * @var string|null $imageLegend
-     */
-    private ?string $imageLegend;
     /**
      * The link-url.
      *
@@ -182,6 +182,11 @@ class ContentBox implements \JsonSerializable
         $this->hasLink = $hasLink;
     }
 
+    public function setImageCaption($imageCaption): void
+    {
+        $this->imageCaption = $imageCaption;
+    }
+
     public function setImageId($imageId): void
     {
         $this->imageId = $imageId;
@@ -190,11 +195,6 @@ class ContentBox implements \JsonSerializable
     public function setImagePath($imagePath): void
     {
         $this->imagePath = $imagePath;
-    }
-
-    public function setImageLegend($imageLegend): void
-    {
-        $this->imageLegend = $imageLegend;
     }
 
     public function setLink($link): void
@@ -311,6 +311,18 @@ class ContentBox implements \JsonSerializable
     }
 
     /**
+     * The image-caption.
+     *
+     * This is only plain-text and not rich-text.
+     *
+     * @return string|null
+     */
+    public function getImageCaption(): ?string
+    {
+        return $this->imageCaption;
+    }
+
+    /**
      * The image-id of the selected image.
      * <code>null</code> if no image was selected or the image was deleted since the block was saved.
      *
@@ -334,18 +346,6 @@ class ContentBox implements \JsonSerializable
         }
 
         return $this->imagePath;
-    }
-
-    /**
-     * The image-legend.
-     *
-     * This is only plain-text and not rich-text.
-     *
-     * @return string|null
-     */
-    public function getImageLegend(): ?string
-    {
-        return $this->imageLegend;
     }
 
     /**

@@ -42,9 +42,9 @@ class Controller extends BlockController
     protected $imgId;
 
     /**
-     * @var string|null $imgLegend
+     * @var string|null $imgCaption
      */
-    protected $imgLegend;
+    protected $imgCaption;
 
     /**
      * @var string $linkTarget
@@ -216,7 +216,7 @@ class Controller extends BlockController
             'buttonType' => $this->buttonType,
             'imgAlt' => $this->imgAlt,
             'imgId' => $this->imgId,
-            'imgLegend' => $this->imgLegend,
+            'imgCaption' => $this->imgCaption,
             'linkType' => $this->linkType,
             'linkValue' => $this->linkValue,
             'linkTarget' => $this->linkTarget,
