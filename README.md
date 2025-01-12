@@ -65,6 +65,6 @@ ContentBox Model: `Concrete\Package\TgsContentBox\Model\ContentBox`
 
 ## Troubleshooting
 If you got some issues while using this package feel free to contact me on the
-[Marketplace](https://market.concretecms.com/) or report an Issue on
+[Marketplace](https://community.concretecms.com/members/profile/329451) or report an Issue on
 [GitHub](https://github.com/tochtergesellschaft/concretecms-content-box/issues).
 
